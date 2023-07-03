@@ -4,25 +4,41 @@
 using namespace std;
 
 // } Driver Code Ends
+
 class Solution{
 public:
  int maxIndexDiff(int arr[], int n) {
-        // code here
-      
-          int i = 0;
-    int j = n - 1;
-    int maxDiff = 0;
+ 
+ int lmin[n];
+ int rmax[n];
+  lmin[0]=arr[0];
+ rmax[n-1]=arr[n-1];
+ for(int i=1;i<n;i++)
+ {
+     lmin[i]=min(arr[i],arr[i-1]);
+     
+ }
+ for (int i = n - 2; i >= 0; i--)
+{
+    rmax[i] = max(rmax[i + 1], arr[i]);
+}
+        
     
-    while (i < j) {
-        if (arr[i] <= arr[j]) {
-            maxDiff = max(maxDiff, j - i);
-            i++;
-            j = n - 1; 
-        } else j--;
-    }
-    
-    return maxDiff;
-    }
+ int ans=0;
+ for(int i=0,j=0;i<n&&j<n;)
+ {
+    //  cout<<lmin[i]<<" "<<rmax[j]<<endl;
+     if(lmin[i]<=rmax[j])
+     {
+         ans=max(ans,j-i);
+         j++;
+         
+     }
+     else
+     i++;
+ }
+ return ans;
+}
 };
 
 
