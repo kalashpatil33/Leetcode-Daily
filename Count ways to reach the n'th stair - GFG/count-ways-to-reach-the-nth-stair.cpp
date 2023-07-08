@@ -26,7 +26,7 @@ class Solution
     }
 };
 
-
+//This takes O(N) space and time...Now lets optimize the space
 
 //{ Driver Code Starts.
 int main()
