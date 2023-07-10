@@ -8,23 +8,25 @@ class Solution
 {
     public:
     //Function to find the maximum money the thief can get.
+    int solve(int arr[],int ind,vector<int> &dp)
+    {
+        if(ind==0)
+        return dp[ind]=arr[ind];
+        if(ind<0)
+        return 0;
+        if(dp[ind]!=-1)
+        return dp[ind];
+        int pick=arr[ind]+solve(arr,ind-2,dp);
+        int nonpick=0+solve(arr,ind-1,dp);
+        return dp[ind]=max(pick,nonpick);
+        
+    }
     int FindMaxSum(int arr[], int n)
     {
-       int prev2=0;
-	   int prev=arr[0];
-	   for(int i=1;i<n;i++)
-	   {
-	       int pick=arr[i]+prev2;
-	       int notpick=0+prev;
-	       int curr=max(pick,notpick);
-	       prev2=prev;
-	       prev=curr;
-	   }
-	   return prev;
+        vector<int> dp(n,-1);
+        return solve(arr,n-1,dp);
     }
 };
-
-//Well again a dynamic programming question using memory optimization
 
 //{ Driver Code Starts.
 int main()
