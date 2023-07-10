@@ -10,18 +10,17 @@ class Solution{
 public:	
 	// calculate the maximum sum with out adjacent
 	int findMaxSum(int *arr, int n) {
-	    vector<int> dp(n,-1);
-	    dp[0]=arr[0];
-	    int pick=0,nonpick=0;
-	    for(int i=1;i<n;i++)
-	    {
-	        pick=arr[i];
-	        if(i>1)
-	        pick+=dp[i-2];
-	        nonpick=0+dp[i-1];
-         dp[i]=max(pick,nonpick);	        
-	    }
-	    return dp[n-1];
+	   int prev2=0;
+	   int prev=arr[0];
+	   for(int i=1;i<n;i++)
+	   {
+	       int pick=arr[i]+prev2;
+	       int notpick=0+prev;
+	       int curr=max(pick,notpick);
+	       prev2=prev;
+	       prev=curr;
+	   }
+	   return prev;
 	}
 };
 
