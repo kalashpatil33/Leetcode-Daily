@@ -4,7 +4,6 @@ using namespace std;
 #define MAX 1000
 
 // } Driver Code Ends
-
 class Solution
 {
     public:
@@ -13,7 +12,7 @@ class Solution
     {
  		int top=0,bottom=n-1,right=m-1,left=0;
  		int dir=0;
- 		while(k>0&&left<=right&&top<=bottom)
+ 		while(k>0)
  		{
  		    if(dir==0)
  		    {
@@ -35,7 +34,7 @@ class Solution
  		    }
  		    right--;
  		    }
- 		    if(dir==2)
+ 		    if(dir==)
  		    {
  		    for(int i=right;i>=left;i--)
  		    {
@@ -46,18 +45,18 @@ class Solution
  		    }
  		    bottom--;
  		    }
- 		    if(dir==3)
+ 		    if(dir==4)
  		    {
  		    for(int i=bottom;i>=top;i--)
  		    {
  		       
  		        k--;
  		       if(k==0)
- 		        return a[i][left];
+ 		        return a[left][i];
  		    }
  		    left++;
  		    }
- 		    dir=(dir+1)%4;
+ 		    dir=
  		}
  		return 0;
     }
