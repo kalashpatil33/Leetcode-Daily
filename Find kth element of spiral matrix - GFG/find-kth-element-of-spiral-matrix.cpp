@@ -11,11 +11,8 @@ class Solution
     int findK(int a[MAX][MAX],int n,int m,int k)
     {
  		int top=0,bottom=n-1,right=m-1,left=0;
- 		int dir=0;
  		while(k>0)
  		{
- 		    if(dir==0)
- 		    {
  		    for(int i=left;i<=right;i++)
  		    {
  		        k--;
@@ -23,9 +20,6 @@ class Solution
  		        return a[top][i];
  		    }
  		    top++;
- 		    }
- 		    if(dir==1)
- 		    {
  		    for(int i=top;i<=bottom;i++)
  		    {
  		        k--;
@@ -33,9 +27,6 @@ class Solution
  		        return a[i][right];
  		    }
  		    right--;
- 		    }
- 		    if(dir==)
- 		    {
  		    for(int i=right;i>=left;i--)
  		    {
  		        
@@ -44,19 +35,14 @@ class Solution
  		        return a[bottom][i];
  		    }
  		    bottom--;
- 		    }
- 		    if(dir==4)
- 		    {
  		    for(int i=bottom;i>=top;i--)
  		    {
  		       
  		        k--;
  		       if(k==0)
- 		        return a[left][i];
+ 		        return a[i][left];
  		    }
  		    left++;
- 		    }
- 		    dir=
  		}
  		return 0;
     }
