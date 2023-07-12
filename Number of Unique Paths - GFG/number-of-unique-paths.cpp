@@ -28,7 +28,7 @@ class Solution
        }
        return prev[b-1];
     }
-    
+    // Space used is o(1) and time as said O(a*b)
 };
 
 
