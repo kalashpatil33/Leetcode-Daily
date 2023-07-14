@@ -9,35 +9,31 @@ using namespace std;
 
 class Solution{   
 public:
-    bool solve(int i,int target,  vector<vector<int>> &dp,vector<int> arr)
-    {
-        if(target==0)
-        {
-            return dp[i][0]=1;
-        }
-        if(i==0)
-        {
-            return dp[i][target]=(arr[0]==target);
-        }
-        if(dp[i][target]!=-1)
-        {
-            return dp[i][target];
-        }
-        bool pick=false;
-        if(arr[i]<=target)
-        {
-            pick=solve(i-1,target-arr[i],dp,arr);
-        }
-        bool notpick=solve(i-1,target,dp,arr);
-        
-        return dp[i][target]=(pick or notpick);
-    }
     bool isSubsetSum(vector<int>arr, int sum){
         int n=arr.size();
-        vector<vector<int>>dp(n,vector<int> (sum+1,-1));
-        return solve(n-1,sum,dp,arr);
+        vector<vector<bool>>dp(n,vector<bool> (sum+1,false));
+        for(int i=0;i<n;i++)
+        {
+            dp[i][0]=true;
+        }
+        if(arr[0]<=sum)
+        dp[0][arr[0]]=true;
+        for(int i=1;i<n;i++)
+        {
+            for(int j=1;j<=sum;j++)
+            {
+                bool pick=false;
+                if(arr[i]<=j)
+                pick=dp[i-1][j-arr[i]];
+                bool notpick=dp[i-1][j];
+                
+                dp[i][j]=pick or notpick;
+            }
+        }
+        return dp[n-1][sum];
     }
 };
+
 
 //{ Driver Code Starts.
 int main() 
