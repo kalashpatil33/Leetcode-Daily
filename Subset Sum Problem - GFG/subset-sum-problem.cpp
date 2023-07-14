@@ -33,7 +33,7 @@ public:
     }
 };
 
-// This is tabulation with time complexity as O(n*target) and space is also O(n*target)
+// This is space optimization with time complexity as O(n*target) and space is also O(target)
 
 //{ Driver Code Starts.
 int main() 
