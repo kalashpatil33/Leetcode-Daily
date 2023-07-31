@@ -9,23 +9,23 @@ using namespace std;
 
 class Solution{
 public:
-     int solve(int i,int val[],int wt[],int W)
-     {
-         if(i==0)
-         {
-            return (int)(W/wt[0])*val[0];
-          }
+    //  int solve(int i,int val[],int wt[],int W)
+    //  {
+    //      if(i==0)
+    //      {
+    //         return (int)(W/wt[0])*val[0];
+    //       }
          
          
-         int pick=INT_MIN,notpick=0;
-         if(wt[i]<=W)
-         {
-             pick=val[i]+solve(i,val,wt,W-wt[i]);
-         }
-         notpick=solve(i-1,val,wt,W);
+    //      int pick=INT_MIN,notpick=0;
+    //      if(wt[i]<=W)
+    //      {
+    //          pick=val[i]+solve(i,val,wt,W-wt[i]);
+    //      }
+    //      notpick=solve(i-1,val,wt,W);
          
-         return max(pick,notpick);
-     }
+    //      return max(pick,notpick);
+    //  }
     int knapSack(int N, int W, int val[], int wt[])
     {
     vector<vector<int>> dp(N,vector<int>(W+1,0));
