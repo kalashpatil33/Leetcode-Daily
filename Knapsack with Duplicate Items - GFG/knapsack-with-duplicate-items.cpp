@@ -31,8 +31,8 @@ public:
     vector<vector<int>> dp(N,vector<int>(W+1,0));
      
      
-       for(int i=wt[0];i<=W;i++)
-       {
+       for(int i=wt[0];i<=W;i++)     //Why wt[0] look at the base case wt<=W asel tarach hotay and here
+       {                            //i is W
            dp[0][i]=(i/wt[0])*val[0];
        }
        
