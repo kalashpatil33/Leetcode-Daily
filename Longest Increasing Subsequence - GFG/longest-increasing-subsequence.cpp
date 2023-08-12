@@ -4,34 +4,29 @@ using namespace std;
 
 // } Driver Code Ends
 
-
 class Solution
 {
     public:
     //Function to find length of longest increasing subsequence.
     int longestSubsequence(int n, int a[])
     {
-       vector<int> temp;
-       int l=1;
-       temp.push_back(a[0]);
+       vector<int> x;
+       x.push_back(a[0]);
        
        for(int i=1;i<n;i++)
        {
-           if(a[i]>temp.back())
-           {
-               temp.push_back(a[i]);
-               l++;
-           }
-           else{
-               int index=lower_bound(temp.begin(),temp.end(),a[i])-temp.begin();
-               temp[index]=a[i];
-           }
+          if(a[i]>x.back())
+          {
+              x.push_back(a[i]);
+          }
+          else{
+              int index=lower_bound(x.begin(),x.end(),a[i])-x.begin();
+              x[index]=a[i];
+          }
        }
-       return l;
+       return x.size();
     }
 };
-
-
 
 //{ Driver Code Starts.
 int main()
