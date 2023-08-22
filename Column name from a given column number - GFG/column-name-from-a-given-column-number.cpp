@@ -16,7 +16,8 @@ class Solution{
             
             char temp='A'+n%26;
             
-            ans=temp+ans;
+            ans=temp+ans;   // this gives AB as ans
+            // ans=ans+temp; //    this gives BA as ans
             
             n=n/26;
         }
@@ -24,6 +25,7 @@ class Solution{
         return ans;
     }
 };
+
 
 //{ Driver Code Starts.
 int main()
