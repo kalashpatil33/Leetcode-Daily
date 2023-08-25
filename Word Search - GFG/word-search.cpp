@@ -16,7 +16,7 @@ public:
         
         if(ind==w.size())
         return true;
-        if(i>=n||j>=x||i<0||j<0||m[i][j]!=w[ind])
+        if(i>=n||j>=x||i<0||j<0||m[i][j]!=w[ind]||m[i][j]=='*')
         {
             return false;
         }
