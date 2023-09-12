@@ -9,53 +9,49 @@ class Solution{
 public:
 	vector<int> findSubarray(int a[], int n) {
 	    // code here
+	    
+	    int ans=INT_MIN;
 	    int sum=0;
-	    vector<int> ans;
-	    int startind=-1,endind=n-1;
-	    int maxi=INT_MIN;
-	    int start=-1;
+	    int startIndex=-1,endIndex=-1;
+	    int start=0;
 	    for(int i=0;i<n;i++)
 	    {
-	         if(sum<0||a[i]<0)
+	        sum=sum+a[i];
+	        if(a[i]<0)
 	        {
-	           // endind=i+1;
 	            sum=0;
+	            start=i+1;
 	            continue;
 	        }
 	        if(sum==0)
 	        {
 	            start=i;
 	        }
-	        sum=sum+a[i];
-	       
 	        
-	        if(sum>maxi)
-	        {
-	            maxi=sum;
-	            endind=i;
-	            startind=start;
-	        }
-	        else{
-	            if(sum==maxi)
+	         if(ans==sum)
 	            {
-	               if(abs(i-start)>(endind-startind))
-	               {
-	                   startind=start;
-	                   endind=i;
-	               }
+	                if((i-start)>(endIndex-startIndex))
+	                {
+	                    endIndex=i;
+	                    startIndex=start;
+	                }
 	            }
+	        if(ans<sum)
+	        {
+	            endIndex=i;
+	            startIndex=start;
+	            ans=sum;
 	        }
 	    }
-	    
-	    for(int i=startind;i<=endind;i++)
-	    {
-	        ans.push_back(a[i]);
-	    }
-	    return ans;
-	    
+	        vector<int> res;
+	        
+	        for(int i=startIndex;i<=endIndex;i++)
+	        {
+	            res.push_back(a[i]);
+	        }
+	        return res;
 	}
 };
-
 
 //{ Driver Code Starts.
 
