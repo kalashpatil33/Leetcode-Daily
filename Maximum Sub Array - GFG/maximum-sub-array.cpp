@@ -27,7 +27,13 @@ public:
 	        {
 	            start=i;
 	        }
-	        
+	         if(ans<sum)
+	        {
+	            endIndex=i;
+	            startIndex=start;
+	            ans=sum;
+	        }
+	        else
 	         if(ans==sum)
 	            {
 	                if((i-start)>(endIndex-startIndex))
@@ -36,12 +42,7 @@ public:
 	                    startIndex=start;
 	                }
 	            }
-	        if(ans<sum)
-	        {
-	            endIndex=i;
-	            startIndex=start;
-	            ans=sum;
-	        }
+	       
 	    }
 	        vector<int> res;
 	        
