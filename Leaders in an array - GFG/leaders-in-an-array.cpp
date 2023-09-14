@@ -12,26 +12,23 @@ class Solution{
     //Function to find the leaders in the array.
     public:
     vector<int> leaders(int a[], int n){
-        vector<int> ans;
-        vector<int> check(n,0);
-        check[n-1]=a[n-1];
+        // Code here
         int maxi=a[n-1];
-        for(int i=n-1;i>=0;i--)
+        vector<int> ans;
+        ans.push_back(maxi);
+        for(int i=n-2;i>=0;i--)
         {
-            maxi=max(maxi,a[i]);
-            check[i]=maxi;
+            if(a[i]>=maxi)
+            {
+                maxi=a[i];
+                ans.push_back(maxi);
+            }
         }
-        
-        for(int i=0;i<n;i++)
-        {
-            // cout<<check[i]<<" ";
-            if(check[i]==a[i])
-            ans.push_back(a[i]);
-        }
+        reverse(ans.begin(),ans.end());
         return ans;
+        
     }
 };
-
 
 //{ Driver Code Starts.
 
