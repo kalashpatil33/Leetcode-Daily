@@ -9,39 +9,45 @@ using namespace std;
 
 class Solution{
 public:
-    bool solve(int i,int arr[],int sum,int N,vector<vector<int>> &dp)
+    bool solve(int i,int arr[],int sum,int n,vector<vector<int>> &dp)
     {
-        if(sum==0)
-        return dp[i][sum]=true;
-        if(i==N-1)
+        if(i>n)
+        return false;
+        if(i==n)
         {
-           return dp[i][sum]=(sum==arr[N-1]);
+            if(sum==0)
+            return true;
+            else
+            return false;
         }
         if(dp[i][sum]!=-1)
         return dp[i][sum];
-        bool pick=false;
+        bool pick=false,notpick=false;
         if(arr[i]<=sum)
-        pick=solve(i+1,arr,sum-arr[i],N,dp);
-        bool notpick=solve(i+1,arr,sum,N,dp);
+        {
+            pick=solve(i+1,arr,sum-arr[i],n,dp);
+        }
+        notpick=solve(i+1,arr,sum,n,dp);
         
-        return dp[i][sum]= pick | notpick;
+        return dp[i][sum]=pick||notpick;
+       
     }
     int equalPartition(int N, int arr[])
     {
+        // code here
         int sum=0;
-       for(int i=0;i<N;i++)
-       {
-           sum+=arr[i];
-       }
-       if(sum%2==1)
-       return false;
-       else
-       {
-       sum=sum/2;
-       vector<vector<int>> dp(N,vector<int> (sum+1,-1));
-       return solve(0,arr,sum,N,dp);
-       }
-    }
+        for(int i=0;i<N;i++)
+        {
+            sum+=arr[i];
+        }
+        if(sum%2!=0)
+        {
+            return false;
+        }
+        sum=sum/2;
+        vector<vector<int>> dp(N+1,vector<int> (sum+1,-1));
+      return  solve(0,arr,sum,N,dp);
+    };
 };
 
 //{ Driver Code Starts.
