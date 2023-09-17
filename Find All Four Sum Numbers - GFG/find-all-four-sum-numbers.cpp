@@ -10,48 +10,48 @@ class Solution{
     public:
     // arr[] : int input array of integers
     // k : the quadruple sum required
-    vector<vector<int> > fourSum(vector<int> &nums, int target) {
+    vector<vector<int>> fourSum(vector<int> &arr, int k) {
         // Your code goes here
-        int n = nums.size(); //size of the array
-    vector<vector<int>> ans;
-
-    // sort the given array:
-    sort(nums.begin(), nums.end());
-
-    //calculating the quadruplets:
-    for (int i = 0; i < n; i++) {
-        // avoid the duplicates while moving i:
-        if (i > 0 && nums[i] == nums[i - 1]) continue;
-        for (int j = i + 1; j < n; j++) {
-            // avoid the duplicates while moving j:
-            if (j > i + 1 && nums[j] == nums[j - 1]) continue;
-
-            // 2 pointers:
-            int k = j + 1;
-            int l = n - 1;
-            while (k < l) {
-                long long sum = nums[i];
-                sum += nums[j];
-                sum += nums[k];
-                sum += nums[l];
-                if (sum == target) {
-                    vector<int> temp = {nums[i], nums[j], nums[k], nums[l]};
-                    ans.push_back(temp);
-                    k++; l--;
-
-                    //skip the duplicates:
-                    while (k < l && nums[k] == nums[k - 1]) k++;
-                    while (k < l && nums[l] == nums[l + 1]) l--;
+        
+        
+        int n=arr.size();
+         vector<vector<int>> ans;
+        sort(arr.begin(),arr.end());
+        for(int i=0;i<n;i++)
+        {
+            if(i>0&&(arr[i]==arr[i-1]))
+            continue;
+            for(int j=i+1;j<n;j++)
+            {
+                if(j!=(i+1)&&(arr[j]==arr[j-1]))   //neither the first nor matching
+                continue;
+                long long sum=arr[i]+arr[j];
+                int l=j+1,h=n-1;
+                while(l<h)
+                {
+                    if(sum+arr[l]+arr[h]==k)
+                    {
+                        ans.push_back({arr[i],arr[j],arr[l],arr[h]});
+                        l++;
+                        h--;
+                        while(l<h && arr[l]==arr[l-1]) l++;
+                        while(l<h && arr[h]==arr[h+1]) h--;
+                    }
+                    else{
+                    if(sum+arr[l]+arr[h]<k)
+                        {
+                            l++;
+                        }
+                        else{
+                            h--;
+                        }
+                    }
                 }
-                else if (sum < target) k++;
-                else l--;
-            }
+             }
         }
+        return ans;
+        
     }
-
-    return ans;
-    }
-    
 };
 
 //{ Driver Code Starts.
