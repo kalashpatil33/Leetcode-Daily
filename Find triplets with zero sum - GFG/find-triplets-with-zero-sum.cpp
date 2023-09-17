@@ -9,7 +9,37 @@ using namespace std;
 *  arr[]: input array
 *  n: size of array
 */
-
+class Solution{
+  public:
+    //Function to find triplets with zero sum.
+    bool findTriplets(int A[], int n)
+    { 
+        //Your code here
+        sort(A,A+n);
+        for(int i=0;i<n;i++)
+        {
+            int temp=A[i];
+            
+            int left=i+1,right=n-1;
+            
+            while(left<right)
+            {
+                if(A[left]+A[right]+temp==0)
+                {
+                // cout<<left<<" "<<right<<" "<<temp<<endl;    
+                return true;
+                }
+                
+                if(A[left]+A[right]+temp>0)
+                right--;
+                
+                 if(A[left]+A[right]+temp<0)
+                left++;
+            }
+        }
+        return false;
+    }
+};
 
 //{ Driver Code Starts.
 int main()
