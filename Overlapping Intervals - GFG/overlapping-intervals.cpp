@@ -33,11 +33,12 @@ public:
                 }
             }
             ans.push_back({start,end});
-            // i=j-1;
          }
          return ans;
     }
 };
+
+// The time complexity is O(2n)+ O(logN)
 
 //{ Driver Code Starts.
 int main(){
