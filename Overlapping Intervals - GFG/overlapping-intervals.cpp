@@ -8,10 +8,10 @@ using namespace std;
 // The time complexity is O(2n)+ O(NlogN)
 class Solution {
 public:
-    static bool cmp(vector<int> &a,vector<int> &b)
-    {
-        return a[1]<b[1];
-    }
+    // static bool cmp(vector<int> &a,vector<int> &b)
+    // {
+    //     return a[1]<b[1];
+    // }
     vector<vector<int>> overlappedInterval(vector<vector<int>>& intervals) {
          // Code here
          sort(intervals.begin(),intervals.end());
@@ -19,24 +19,22 @@ public:
          vector<vector<int>> ans;
          int n=intervals.size();
          int j=0;
-         for(int i=0;i<n;i++)
+         int start=intervals[0][0];
+         int end=intervals[0][1];
+         for(int i=1;i<n;i++)
          {
-            int start=intervals[i][0];
-            int end=intervals[i][1];
-            if(ans.size()!=0&&end<=ans.back()[1])
-            continue;
-            for( j=i+1;j<n;j++)
+            if(intervals[i][0]<=end)
             {
-                if(end>=intervals[j][0])
-                {
-                    end=max(end,intervals[j][1]);
-                }
-                else{
-                    break;
-                }
+                end=max(end,intervals[i][1]);
             }
-            ans.push_back({start,end});
+            else{
+                ans.push_back({start,end});
+                start=intervals[i][0];
+                end=intervals[i][1];
+            }
+           
          }
+         ans.push_back({start,end});
          return ans;
     }
 };
