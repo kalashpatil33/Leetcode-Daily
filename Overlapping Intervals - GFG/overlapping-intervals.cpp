@@ -3,6 +3,9 @@
 using namespace std;
 
 // } Driver Code Ends
+
+
+// The time complexity is O(2n)+ O(NlogN)
 class Solution {
 public:
     static bool cmp(vector<int> &a,vector<int> &b)
@@ -38,7 +41,7 @@ public:
     }
 };
 
-// The time complexity is O(2n)+ O(logN)
+
 
 //{ Driver Code Starts.
 int main(){
