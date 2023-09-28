@@ -18,7 +18,7 @@ public:
             s2=s2+(long long)(arr[i])*(long long)(arr[i]);
         }
         
-        sn= ((long long)n*(long long)(n+1))/2;
+        sn= ((long long)n*(n+1))/2;
         s2n=(sn*(2*n+1))/3;
         
         long long x=sn-s;
