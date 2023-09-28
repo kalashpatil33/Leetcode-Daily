@@ -8,31 +8,47 @@ class Solution{
 public:
     vector<int> findTwoElement(vector<int> arr, int n) {
         // code here
-        
-        long long s=0,s2=0;
-        long long sn=0,s2n=0;
-        
+        int xr=0;
         for(int i=0;i<n;i++)
         {
-            s=s+arr[i];
-            s2=s2+(long long)(arr[i])*(long long)(arr[i]);
+            xr=xr xor arr[i];
+            xr=xr xor (i+1);
         }
         
-        sn= ((long long)n*(n+1))/2;
-        s2n=(sn*(2*n+1))/3;
+        int setbit= (xr & ~(xr-1));
         
-        long long x=sn-s;
-        long long y=s2n-s2;
+        int zero=0,one=0;
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i] & setbit !=0)
+            {
+                one=one xor arr[i];
+            }
+            else{
+                zero=zero xor arr[i];
+            }
+            
+             if(((i+1) & setbit) !=0)
+            {
+                one=one xor (i+1);
+            }
+            else{
+                zero=zero xor (i+1);
+            }
+        }
+        int c=0;
+        for(int i=0;i<n;i++)
+        {
+            if(zero==arr[i])
+            c++;
+        }
         
-        long long missing= (y/x);
-        missing= (missing+(x))/2;
-        long long repeating= missing-(int)(x);
+        if(c==2)
+        return {zero,one};
+        return {one,zero};
         
-        return {(int)repeating,(int)missing};
     }
 };
-
-
 
 //{ Driver Code Starts.
 
