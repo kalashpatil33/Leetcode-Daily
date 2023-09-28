@@ -19,7 +19,7 @@ public:
         }
         
         sn= ((long long)n*(long long)(n+1))/2;
-        s2n=((long long)sn*(2*n+1))/3;
+        s2n=(sn*(2*n+1))/3;
         
         long long x=sn-s;
         long long y=s2n-s2;
