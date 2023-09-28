@@ -4,30 +4,57 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 class Solution{
     public:
         //Function to merge the arrays.
         void merge(long long arr1[], long long arr2[], int n, int m) 
         { 
-            // code here 
-            int i=n-1,j=0;
+            // code here
+            int len=(n+m);
+            int gap=(n+m)/2+(n+m)%2;
             
-            while(i>=0 && j< m)
+            while(gap>0)
             {
-                if(arr1[i]>arr2[j])
+            int i=0,j=i+gap;
+            
+            while(j<len)
+            {
+                
+                if(i<n && j<n)
                 {
-                    swap(arr1[i],arr2[j]);
-                    i--;
-                    j++;
+                    if(arr1[i]>arr1[j])
+                    swap(arr1[i],arr1[j]);
                 }
                 else{
-                    break;
+                    if(i>=n)
+                    {
+                        if(arr2[i-n]>arr2[j-n])
+                        swap(arr2[i-n],arr2[j-n]);
+                    }
+                    else{
+                        if(i<n&&j>=n)
+                        {
+                            if(arr1[i]>arr2[j-n])
+                            swap(arr1[i],arr2[j-n]);
+                        }
+                    }
                 }
+            i++;
+            j++;
             }
-            sort(arr1,arr1+n);
-            sort(arr2,arr2+m);
+            
+            if(gap==1)
+            break;
+            gap=gap/2+gap%2;
+            // cout<<gap<<" "<<endl;
+            
+           
         } 
+        }
 };
+
+
 
 //{ Driver Code Starts.
 
