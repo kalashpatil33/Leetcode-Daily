@@ -26,7 +26,7 @@ class Solution{
                 }
             }
             else{                //sorted right half
-                if(x[mid]<=x[h])
+                if(x[mid]<x[h])
                 {
                     if(x[mid]<=key && key<=x[h])
                     {
