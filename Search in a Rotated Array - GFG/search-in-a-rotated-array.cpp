@@ -26,6 +26,8 @@ class Solution{
                 }
             }
             else{                //sorted right half
+                if(x[mid]<=x[h])
+                {
                     if(x[mid]<=key && key<=x[h])
                     {
                         l=mid+1;
@@ -34,6 +36,7 @@ class Solution{
                         h=mid-1;
                     }
                 }
+            }
         }
         return -1;
         
