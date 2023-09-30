@@ -16,7 +16,7 @@ class Solution {
             if(x[mid]==key)
             return true;
             
-            if(x[l]==x[mid] && x[mid]==x[h])
+            while(x[l]==x[mid] && x[mid]==x[h])
             {
             l++;
             h--;
