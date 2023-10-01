@@ -13,20 +13,25 @@ class Solution{
     {
     // / Your code goes here   
         // return sqrt(x);
-        int ans=0;
-        for(int i=0;i<=x;i++)
-        {
-            if(i*i<=x)
+        long long ans=0,l=0,h=x;
+         while(l<=h)
+         {
+            long long mid=(l+h)/2;
+            
+            if(mid*mid<=x)
             {
-                ans =i;
+                ans=mid;
+                l=mid+1;
             }
             else{
-                break;
+                h=mid-1;
             }
+           
         }
         return ans;
     }
 };
+
 
 //{ Driver Code Starts.
 
