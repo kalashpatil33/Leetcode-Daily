@@ -11,8 +11,20 @@ class Solution{
   public:
     long long int floorSqrt(long long int x) 
     {
-        // Your code goes here   
-        return sqrt(x);
+    // / Your code goes here   
+        // return sqrt(x);
+        int ans=0;
+        for(int i=0;i<=x;i++)
+        {
+            if(i*i<=x)
+            {
+                ans =i;
+            }
+            else{
+                break;
+            }
+        }
+        return ans;
     }
 };
 
