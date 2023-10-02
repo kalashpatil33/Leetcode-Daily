@@ -25,11 +25,6 @@ public:
            if(c>=k)
            return true;
        }
-       
-    //   if(c>=k)
-    //   {
-    //       return true;
-    //   }
        return false;
        
    }
@@ -38,29 +33,29 @@ public:
     
         // Write your code here
         sort(stalls.begin(),stalls.end());
-        int maxi=*max_element(stalls.begin(),stalls.end());
-        int mini=*min_element(stalls.begin(),stalls.end());
-        int l=1,h=maxi-mini;
+        // int maxi=*max_element(stalls.begin(),stalls.end());
+        // int mini=*min_element(stalls.begin(),stalls.end());
+        int l=1,h=stalls[n-1]-stalls[0];
         int ans=0;
         while(l<=h)
         {
         int mid=(l+h)/2;
         bool check=ispossible(stalls,mid,k);
-        
-          if(check)
-          {
+        if(check)
+        {
             // ans=l;
             l=mid+1;
-          }
-          else{
+        }
+        else{
             h=mid-1;
-          }
+         }
         }
         
         return h;
         
     }
 };
+
 
 //{ Driver Code Starts.
 
