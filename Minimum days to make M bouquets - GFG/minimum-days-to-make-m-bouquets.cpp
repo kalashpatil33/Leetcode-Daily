@@ -3,58 +3,59 @@
 using namespace std;
 
 // } Driver Code Ends
-
-
-
 class Solution {
   public:
-    bool ispossible(vector<int> bloomDay,long long mid,long long m,long long k)
+    bool ispossible(vector<int> &bloomDay,int hours,int m,int k)
     {
+        int  c=0,d=0;
         int n=bloomDay.size();
-        long long c=0,d=0;
         for(int i=0;i<n;i++)
         {
-            if(bloomDay[i]<=mid)
+            if(c==k)
             {
                 d++;
-                // continue;
+                c=0;
+            }
+            if(bloomDay[i]<=hours)
+            {
+                c++;
             }
             else{
-                c+=d/k;
-                d=0;
+                c=0;
             }
         }
-         c+=d/k;
-        if(c>=m)
+        d=d+c/k;
+        if(d>=m)
         return true;
         return false;
     }
     int solve(int M, int K, vector<int> &bloomDay){
       // Code here
+      int maxi=*max_element(bloomDay.begin(),bloomDay.end());
+      int mini=*min_element(bloomDay.begin(),bloomDay.end());
       int n=bloomDay.size();
       if(M*K>n)
       return -1;
-      
-      
-      long long maxtime=*max_element(bloomDay.begin(),bloomDay.end());
-      long long mintime=*min_element(bloomDay.begin(),bloomDay.end());
-      long long l=mintime,h=maxtime;
       long long ans=-1;
+      long long l=mini,h=maxi;
       while(l<=h)
       {
           long long mid=(l+h)/2;
-          bool possible=ispossible(bloomDay,mid,M,K);
+           bool check=ispossible(bloomDay,mid,M,K);
+           
+           if(check)
+           {
+           h=mid-1;
+           ans=mid;
+           }
+           else{
+               l=mid+1;
+           }
           
-          if(possible)
-          {
-              h=mid-1;
-              ans=mid;
-          }
-          else{
-              l=mid+1;
-          }
+          
       }
       return ans;
+      
     }
 };
 
