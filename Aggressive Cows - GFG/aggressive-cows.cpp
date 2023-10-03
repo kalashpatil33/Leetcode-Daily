@@ -33,25 +33,26 @@ public:
     
         // Write your code here
         sort(stalls.begin(),stalls.end());
-        // int maxi=*max_element(stalls.begin(),stalls.end());
-        // int mini=*min_element(stalls.begin(),stalls.end());
-        int l=1,h=stalls[n-1]-stalls[0];
+        int maxi=*max_element(stalls.begin(),stalls.end());
+        int mini=*min_element(stalls.begin(),stalls.end());
+        int l=1,h=maxi-mini;
         int ans=0;
         while(l<=h)
         {
         int mid=(l+h)/2;
         bool check=ispossible(stalls,mid,k);
-        if(check)
-        {
-            // ans=l;
+        
+          if(check)
+          {
+            ans=mid;
             l=mid+1;
-        }
-        else{
+          }
+          else{
             h=mid-1;
-         }
+          }
         }
         
-        return h;
+        return ans;
         
     }
 };
