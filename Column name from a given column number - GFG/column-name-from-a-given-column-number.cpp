@@ -9,19 +9,17 @@ class Solution{
     public:
     string colName (long long int n)
     {
-        string ans="";
+        string ans;
+        
         while(n>0)
         {
-            n=n-1;
+            n--;
+            char ch= ((n)%26+'A');
             
-            char temp='A'+n%26;
+            ans=ch+ans;
             
-            ans=temp+ans;   // this gives AB as ans
-            // ans=ans+temp; //    this gives BA as ans
-            
-            n=n/26;
+            n/=26;
         }
-        
         return ans;
     }
 };
