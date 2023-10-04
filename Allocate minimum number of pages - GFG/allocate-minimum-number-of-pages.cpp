@@ -18,13 +18,13 @@ class Solution
         int sum=0;
         for(int i=0;i<N;i++)
         {
-            if((sum+A[i])<=pages)
+            if((sum+A[i])>pages)
             {
-                sum+=A[i];
-            }
-            else{
                 c++;
                 sum=A[i];
+            }
+            else{
+                sum+=A[i];
             }
         }
         
