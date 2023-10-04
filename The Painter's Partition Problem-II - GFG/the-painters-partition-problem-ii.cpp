@@ -58,7 +58,7 @@ class Solution
             }
         }
         
-        return h+1;
+        return l;
     }
 };
 
