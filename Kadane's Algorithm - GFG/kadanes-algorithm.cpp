@@ -12,30 +12,32 @@ class Solution{
     long long maxSubarraySum(int arr[], int n){
         
         // Your code here
-        long long ans=-1e9;
+        long long ans=INT_MIN;
         long long sum=0;
         
         for(int i=0;i<n;i++)
         {
-            sum=sum+arr[i];
-            if(sum<0)
+            sum+=arr[i];
+            
+            if(sum<=0)
             {
                 sum=0;
             }
-            else{
-                ans=max(ans,sum);
-            }
+            else
+            ans=max(ans,sum);
         }
         
-        if(ans==-1e9)
-        {
-            sort(arr,arr+n);
-            return arr[n-1];
-        }
+    if(ans==INT_MIN)
+        
+    {
+        sort(arr,arr+n);
+        return arr[n-1];
+    }
         return ans;
         
     }
 };
+
 
 //{ Driver Code Starts.
 
