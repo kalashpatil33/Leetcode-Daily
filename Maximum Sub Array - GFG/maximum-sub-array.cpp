@@ -16,13 +16,14 @@ public:
 	    int start=0;
 	    for(int i=0;i<n;i++)
 	    {
-	        sum=sum+a[i];
-	        if(a[i]<0)
+	        if(a[i]<0)               //note that this condition is as the subarray 
+	                                //should only have non-negative integers
 	        {
 	            sum=0;
 	            start=i+1;
 	            continue;
 	        }
+	        sum=sum+a[i];
 	        if(sum==0)
 	        {
 	            start=i;
