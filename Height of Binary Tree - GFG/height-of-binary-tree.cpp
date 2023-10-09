@@ -111,8 +111,8 @@ class Solution{
         
         while(!q.empty()){
             int size=q.size();
-            if(size==0)
-            return ans;
+            // if(size==0)
+            // return ans;
             ans++;
             while(size--)
             {
