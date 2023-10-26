@@ -10,39 +10,33 @@ class Solution{
   public:
     vector<int> printClosest(int arr[], int brr[], int n, int m, int x) {
         //code here
-        int a=0,b=0;
-       int i=0,j=m-1;
-       int diff=INT_MAX;
-       while(i<n && j>=0)
-       {
-         
-     //    cout<<diff<<endl;
-         if(diff > abs((arr[i]+brr[j])-x))
-         {
-             diff=abs((arr[i]+brr[j])-x);
-             a=arr[i];
-             b=brr[j];
-            
-         }
-        //   cout<<a<<" "<<b;
-         if((arr[i]+brr[j])<=x)
-         {
-           i++;     
         
-         }
-         else{
-             
-             j--;
-         }
-        //   diff=abs((arr[i]+brr[j])-x);
+        int i=n-1,j=0;
+        int diff=INT_MAX;
+        vector<int> ans(2,0);
+        while(i>=0 && j< m)
+        {
+            if(abs(arr[i]+brr[j]-x)<diff)
+            {
+                ans[0]=arr[i];
+                ans[1]=brr[j];
+                
+                diff=abs(arr[i]+brr[j]-x);
+            }
             
-            // cout<<a<<" "<<b<<endl;
-           
-       }
-       return {a,b};
+            if(arr[i]+brr[j]<x)
+            {
+                j++;
+            }
+            else{
+                i--;
+            }
+        }
+        
+        return ans;
+        
     }
 };
-
 
 //{ Driver Code Starts.
 
