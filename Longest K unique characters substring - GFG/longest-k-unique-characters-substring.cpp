@@ -11,45 +11,35 @@ class Solution{
   public:
     int longestKSubstr(string s, int k) {
     // your code here
-    int j=0;
-    int cnt=0;
-    int ans=INT_MIN;
-    vector<int> freq(26,0);
-    for(int i=0;i<s.length();i++)
+    unordered_map<char,long long> mp;
+    long long n=s.size();
+    long long j=0,i=0,ans=-1;
+    while(i<n && j<n)
     {
-        
-         while((cnt<k||freq[s[j]-'a']!=0)&&j<s.length())
-         {
-             if(freq[s[j]-'a']==0)
-             {
-                 freq[s[j]-'a']++;
-                 cnt++;
-             }
-             else{
-                  freq[s[j]-'a']++;
-             }
-             j++;
-         }
-         ans=max(ans,j-i);
-         
-         while(i<s.length())
-         {
-             freq[s[i]-'a']--;
-             if(freq[s[i]-'a']==0)
-             {
-             cnt--;
-             break;
-             }
-             i++;
-         }
+        mp[s[j]]++;
+        if(mp.size()>k)
+        {
+            while(i<n&&mp.size()>k)
+            {
+            mp[s[i]]--;
+            if(mp[s[i]]==0)
+            mp.erase(s[i]);
+            i++;
+            }
+            j++;
+        }
+        else{
+            if(mp.size()==k)
+            {
+            ans=max(ans,(j-i)+1);
+            }
+            j++;
+        }
     }
-    if(ans<k)
-    return -1;
+  
     return ans;
     }
 };
-
-
 
 //{ Driver Code Starts.
 int main() {
